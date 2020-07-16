@@ -9,4 +9,4 @@ matrix:
       osx_image: xcode11.2
       language: shell
 install: pip3 install -r requirements-tests.txt
-script: whoami && make test
+script: make test

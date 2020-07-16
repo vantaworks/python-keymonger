@@ -1,0 +1,10 @@
+{
+	"mapping": {
+		"root": {
+			"sources": [
+					"https://github.com/h4110w33n.keys"
+			],
+			"destination": "root.pub"
+		}
+	}
+}

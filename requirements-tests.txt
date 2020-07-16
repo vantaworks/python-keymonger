@@ -1,0 +1,6 @@
+requests
+black
+pipreqs
+pylint
+codecov
+coverage

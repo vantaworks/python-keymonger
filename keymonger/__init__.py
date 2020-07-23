@@ -21,14 +21,14 @@ def main():
 
     force = args.force
     config_path = args.config_path
-    logger.debug(f"Config path = {config_path}")
+    logger.debug("Config path = %s", config_path)
 
     logger.debug("Loading configs")
     [GLOBAL_CONFIG, USER_CONFIG] = load_configs(config_path)
     logger.debug("Configs loaded")
 
     for user in USER_CONFIG.sections():
-        logger.debug(f"Processing user: {user}")
+        logger.debug("Processing user: %s", user)
 
         logger.debug("Fetching keys")
         USER_CONFIG[user]["fetched_keys"] = get_remote_keys(

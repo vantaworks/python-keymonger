@@ -1,37 +1,5 @@
-import argparse
 import logging
-import json
-import pwd
-import os
-import sys
-
-LOG = logging.getLogger(__name__)
-
-
-def update_permissions(user, user_config):
-    LOG.debug('Permissions for "%s" ', user_config["destination"])
-    try:
-        uid = pwd.getpwnam(user).pw_uid
-        gid = pwd.getpwnam(user).pw_gid
-    except KeyError as e:
-        LOG.error("Unable to find user \"{}\"".format(user))
-    chmod = 0o600
-    LOG.debug('Setting perms = "%s"', oct(chmod)[2:])
-    os.chmod(user_config["destination"], chmod)
-    LOG.debug('Setting owner UID = "%s"', uid)
-    LOG.debug('Setting owner GID = "%s"', gid)
-    os.chown(user_config["destination"], uid, gid)
-
-
-def write_authorized_keys(destination, keys):
-    with open(destination, "w") as authorized_keys_file:
-        authorized_keys_file.write(keys)
-
-
-def load_config(config_path):
-    with open(config_path, "r") as config_file:
-        config = json.load(config_file)
-    return config
+import argparse
 
 
 def log_setup(verbosity):
@@ -67,8 +35,8 @@ def arg_parser():
         "-c",
         "--config",
         dest="config_path",
-        default="config.json",
-        help="Specify the location of the config file (default: './config.json')",
+        default="keymonger.conf",
+        help="Specify the location of the config file (default: './keymonger.conf')",
     )
     args.add_argument(
         "-v",

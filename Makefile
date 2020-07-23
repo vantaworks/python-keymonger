@@ -38,8 +38,9 @@ requirements.txt:
 	pip -q install pipreqs
 	pipreqs --no-pin
 
-test:
-	python3 $(TESTSCRIPT) || python $(TESTSCRIPT)
+test: install
+	keymonger -c examples/keymonger.conf
+# 	python3 $(TESTSCRIPT) || python $(TESTSCRIPT)
 
 clean: clean-build clean-pyc
 

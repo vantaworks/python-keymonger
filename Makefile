@@ -39,7 +39,7 @@ requirements.txt:
 	pipreqs --no-pin
 
 test: install
-	keymonger -c examples/keymonger.conf
+	keymonger -c examples/keymonger-$(USER).conf
 # 	python3 $(TESTSCRIPT) || python $(TESTSCRIPT)
 
 clean: clean-build clean-pyc

@@ -1,12 +1,11 @@
 language: python
 matrix:
   include:
-    - name: "Python 3.8.0 on Xenial Linux"
+    - name: "Ubuntu"
       python: 3.8
-      dist: xenial
-    - name: "Python 3.7.4 on macOS"
+      dist: bionic
+    - name: "macOS"
       os: osx
-      osx_image: xcode11.2
+      osx_image: xcode12
       language: shell
-# install: pip3 install -r requirements-tests.txt
 script: make install test

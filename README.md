@@ -10,8 +10,43 @@ This is project is currently in a early beta stage; however, if that doesn't sca
 ```
 git@github.com:vantaworks/python-keymonger.git
 make install
-$EDITOR config.json
-keymonger -v
+$EDITOR /etc/keymonger.conf
+keymonger -c /etc/keymonger.conf
 ```
+
+### Example config files
+
+##### All in one
+/etc/keymonger.conf
+```
+[global]
+set_permissions=yes
+verbose_logging=yes
+idempotency_check=yes
+
+[user]
+; can take a comma delimited list without spaces for multiple sources
+key_sources = https://github.com/user.keys
+; this destination is optional since keymonger will guess this.
+key_destination = /home/user/.ssh/authorized_keys
+```
+
+##### Using keymonger.d config imports
+/etc/keymonger.conf
+```
+[global]
+set_permissions=yes
+verbose_logging=yes
+idempotency_check=yes
+include_config=/etc/keymonger.d/*.conf
+```
+
+/etc/keymonger.d/user.conf
+```
+[user]
+key_sources = https://github.com/user.keys
+key_destination = /home/user/.ssh/authorized_keys
+```
+
 
 Example config files are in the `examples/` directory to get you started.

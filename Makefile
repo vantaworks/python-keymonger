@@ -50,7 +50,6 @@ coverage: test
 	coverage report --include="keymonger/*" -m
 
 coverage-upload: coverage
-	pip install -q codecov
 	codecov
 
 release: requirements.txt clean 

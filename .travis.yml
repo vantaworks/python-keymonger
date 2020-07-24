@@ -7,6 +7,6 @@ matrix:
     - name: "macOS"
       os: osx
       osx_image: xcode12
-      python: 3.8
+      env: INSTALL_TYPE=macpython VERSION=3.8 VENV=venv
       language: shell
 script: make coverage

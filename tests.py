@@ -151,9 +151,13 @@ class KeymongerTests(unittest.TestCase):
             TEST_USER,
             TEST_DESTINATION2,
         )
-        keymonger.update_permissions(TEST_USER, TEST_DESTINATION2)
-        results = Path(TEST_DESTINATION2).owner()
-        self.assertTrue(results == TEST_USER)
+        if TEST_USER == "root":
+            with self.assertRaises(PermissionError):
+                keymonger.update_permissions(TEST_USER, TEST_DESTINATION2)
+        else:
+            keymonger.update_permissions(TEST_USER, TEST_DESTINATION2)
+            results = Path(TEST_DESTINATION2).owner()
+            self.assertTrue(results == TEST_USER)
         LOG.debug("\tTest 2: PASS")
 
         # print({section: dict(global_config[section]) for section in global_config.sections()})

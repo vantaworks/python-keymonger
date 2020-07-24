@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 __author__ = "Robert Rice"
-
+__version__ = "0.0.2"
 
 from .config import load_configs
 from .getter import get_remote_keys
@@ -14,7 +14,7 @@ from .writer import (
 )
 
 
-def main():
+def main():  # pragma: no cover
     args = arg_parser()
     verbose = args.verbose
     logger = log_setup(verbose)
@@ -74,7 +74,3 @@ def main():
             logger.debug("Updating permissions")
             update_permissions(user, USER_CONFIG[user]["key_destination"])
             logger.debug("Permissions updated")
-
-
-if __name__ == "__main__":
-    main()

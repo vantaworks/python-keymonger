@@ -10,7 +10,7 @@ help:
 	@echo "    lint: lint evertyhing in the coinmetrics directory."
 
 clean:
-	rm -f authorized_keys
+	rm -f authorized_keys_*
 
 lint:
 	pylint keymonger/*.py
@@ -27,6 +27,7 @@ clean-build:
 	find . -name '*.egg' -exec rm -f {} +
 	rm -f authorized_keys
 	rm -f *.pub
+	rm -f tests/fake_keys
 
 clean-pyc:
 	find . -name '*.pyc' -exec rm -f {} +
@@ -39,12 +40,12 @@ requirements.txt:
 	pipreqs --no-pin
 
 test: install
-	keymonger -c examples/keymonger-$(USER).conf
-# 	python3 $(TESTSCRIPT) || python $(TESTSCRIPT)
+	pip install -qr requirements-tests.txt
+	keymonger -vc tests/keymonger-$(USER).conf
 
 clean: clean-build clean-pyc
 
-coverage:
+coverage: test
 	coverage run $(TESTSCRIPT)
 	coverage report --include="keymonger/*" -m
 

@@ -1,9 +1,8 @@
 import requests
 
-__version__ = "0.0.2"
 KEYMONGER_BANNER = "Managed by keymonger"
 KEYMONGER_HEADERS = {
-    "User-Agent": "keymonger/{}".format(__version__),
+    "User-Agent": "keymonger",
 }
 
 

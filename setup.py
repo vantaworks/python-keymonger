@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ Setup for Keymonger """
 from setuptools import setup
-from keymonger.getter import __version__
+__version__ = "0.0.2"
 
 with open('requirements.txt') as f:
     required = f.read().splitlines()

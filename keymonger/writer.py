@@ -22,11 +22,8 @@ def write_authorized_keys(destination, keys):
 
 
 def update_permissions(user, destination):
-    try:
-        uid_value = getpwnam(user).pw_uid
-        gid_value = getpwnam(user).pw_gid
-    except KeyError as e:
-        pass
+    uid_value = getpwnam(user).pw_uid
+    gid_value = getpwnam(user).pw_gid
     chmod_value = 0o600
     chmod(destination, chmod_value)
     chown(destination, uid_value, gid_value)

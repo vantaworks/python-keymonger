@@ -8,4 +8,4 @@ matrix:
       os: osx
       osx_image: xcode12
       language: shell
-script: make install test
+script: make coverage

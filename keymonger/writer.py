@@ -10,7 +10,7 @@ def set_key_destination(user):
 def read_key_destination(key_destination):
     try:
         with open(key_destination, "r") as authorized_keys_file:
-            keys_from_file = authorized_keys_file.read()
+            keys_from_file = authorized_keys_file.read()  # pragma: no cover
     except FileNotFoundError:
         keys_from_file = ""
     return keys_from_file

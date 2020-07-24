@@ -7,6 +7,9 @@ matrix:
     - name: "macOS"
       os: osx
       osx_image: xcode12
-      env: INSTALL_TYPE=macpython VERSION=3.8 VENV=venv
-      language: shell
+      language: generic
+      before_install:
+        - pip3 install virtualenv
+        - virtualenv -p python3 ~/venv
+        - source ~/venv/bin/activate
 script: make coverage

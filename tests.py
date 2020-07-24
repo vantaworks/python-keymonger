@@ -160,12 +160,5 @@ class KeymongerTests(unittest.TestCase):
             self.assertTrue(results == TEST_USER)
         LOG.debug("\tTest 2: PASS")
 
-        # print({section: dict(global_config[section]) for section in global_config.sections()})
-
-    # def test_print(self, config):
-    #   print("Just a doc")
-    #   print({section: dict(config[section]) for section in config.sections()})
-
-
 if __name__ == "__main__":
     unittest.main(verbosity=2)

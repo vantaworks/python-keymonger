@@ -36,11 +36,11 @@ clean-pyc:
 	find . -name '__pycache__' -exec rm -fr {} +
 
 requirements.txt:
-	pip3 -q install pipreqs
+	pip -q install pipreqs
 	pipreqs --no-pin
 
 test: install
-	pip3 install -qr requirements-tests.txt
+	pip install -qr requirements-tests.txt
 	keymonger -vc tests/keymonger-$(USER).conf
 
 clean: clean-build clean-pyc
@@ -50,7 +50,7 @@ coverage: test
 	coverage report --include="keymonger/*" -m
 
 coverage-upload: coverage
-	pip3 install -q codecov
+	pip install -q codecov
 	codecov
 
 release: requirements.txt clean 

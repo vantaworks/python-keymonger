@@ -7,5 +7,6 @@ matrix:
     - name: "macOS"
       os: osx
       osx_image: xcode12
+      python: 3.8
       language: shell
 script: make coverage

@@ -28,8 +28,11 @@ TEST_DESTINATION2 = "tests/fake_keys"
 class KeymongerTests(unittest.TestCase):
 
 	def test_load_configs(self):
-		results = keymonger.load_configs(TEST_CONFIG_FILE)
 		LOG.debug("")
+		LOG.debug("\n\tFunction: load_configs()")
+        LOG.debug("\tArgument(s): config_path = %s", TEST_CONFIG_FILE)
+		results = keymonger.load_configs(TEST_CONFIG_FILE)
+		
 		LOG.debug("\tTest 1: Return types == configparser.ConfigParser")
 		for result in results:
 			self.assertTrue(isinstance(result, configparser.ConfigParser))
